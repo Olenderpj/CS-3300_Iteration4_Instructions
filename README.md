@@ -117,11 +117,45 @@ end
 </html>
 ```
 
-2. Modify the code to include your name where it says **[Replace your name here]** around line 16.
-3. Refresh your browser page and take a look at the changes made to the page
+2. Modify the code to include your name where it says **[Replace your name here]** around line 16.<br>
+3. Refresh your browser page and take a look at the changes made to the page <br>
 
+<hr>
 
+# CircleCI Setup
+### Continuous Integration Continuous Delivery Pipeline
 
+### Step 1 - Configuring circleCI in the project
+1. In your application's directory, create a new directory with name `.circleci` (including the period at the beginning 
+of the name)<br>
+`mkdir .circleci`
+2. Create a new file inside the directory titled **config.yml**<br>
+`touch .circleci/config.yml`
+3. Copy and paste the following contentment from below into the config.yml file<br>
+```YML
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: 'tghastings/code-esaas:latest'
+    steps:
+      - checkout
+      - run:
+          name: rspec
+          command: sed -i 's/ruby "[0-9].[0-9].[0-9]"/ruby "3.0.2"/' Gemfile && bundle install && bundle exec rake db:migrate RAILS_ENV=test && bundle exec rspec
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
+    jobs:
+      - build
+```
 
-
-
+### Step 2 - Setting up a CircleCI account
+1. Go to https://circleci.com and Sign-in with GitHub
+   1. Accept the Authorization of Circle CI (you'll be re-directed to GitHub and then back to CircleCI)
+2. Select the repository for your portfolio project (this should be listed in CircleCI's interface) ![](../../Desktop/Screenshot 2022-11-10 at 9.15.44 AM.png)
+3. [alt-text](circleCI-step1.png)
