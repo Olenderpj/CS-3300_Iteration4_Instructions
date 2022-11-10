@@ -157,5 +157,32 @@ workflows:
 ### Step 2 - Setting up a CircleCI account
 1. Go to https://circleci.com and Sign-in with GitHub
    1. Accept the Authorization of Circle CI (you'll be re-directed to GitHub and then back to CircleCI)
-2. Select the repository for your portfolio project (this should be listed in CircleCI's interface) ![](../../Desktop/Screenshot 2022-11-10 at 9.15.44 AM.png)
-3. [alt-text](circleCI-step1.png)
+2. Select the repository for your portfolio project (this should be listed in CircleCI's interface)<br>
+![alt-text](circleCI-step1.png)
+   1. You may see the CI/CD pipeline in action and start to run your tests (it should look something like the image below)<br>
+   ![alt-textx](circleCI-step2.png)
+3. Push your code with unit tests to GitHub
+4. Verify that you can see your tests passing on https://app.circleci.com/pipelines/github/<GITHUB_USERNAME>/<PROJECT_NAME> <br>
+   1. ![alt-image](circleCI-step3.png)
+5. Make changes to the code in your project.rb file so that the tests will fail Do this by commenting out `validate_presence_of`<br>
+```
+class Project < ApplicationRecord
+    # require title and description
+    #validates_presence_of :title, :description
+end
+```
+6. Push your modified code back to GitHub and navigate back to your project in CircleCI https://app.circleci.com/pipelines/github/<GITHUB_USERNAME>/<PROJECT_NAME> <br>
+7. See that your tests failed
+   ![alt-text](circleCI-step4.png)
+8. Click on the small triangle left of the red <span style="color:red;">FAILED</span> icon.<br>
+9. Click on the blue <span style="color:#00BFFF;">build</span> link.
+10. Expand the rspec box to view the test output.
+    ![alt-text](circleCI-step5.png)
+11. Revert the changes you just made in the project.rb file and uncomment the `validates_presence_of` line
+```
+class Project < ApplicationRecord
+     # require title and description
+    validates_presence_of :title, :description
+end
+```
+12. Push your code back to GitHub and re-check CircleCI to ensure that all the tests pass again.<br>
