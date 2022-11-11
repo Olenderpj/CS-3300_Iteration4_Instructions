@@ -7,7 +7,7 @@
 ### Step 2 - Create a Landing/ Index page
 
 1. Begin by adding a route to the routes.rb file found in config/routes.rb
-2. Add the following code to the file<br>
+2. Modify the root command previously added to the file to now state <br>
 `root to: "home#index`
 3. Next, create the app/controllers/home_controller.rb file and add ALL of the following code.
 
@@ -34,8 +34,9 @@ end
 
 ### Step 3 - Installing and Configuring Devise
 
-1. Add the devise gem to your Gemfile by running the following command <br>
-`gem install devise`
+1. Add the devise gem to your Gemfile after gem "rails" <br>
+   `gem "rails" , "~> 7.0.3"` <br>
+   `gem "devise"`
 2. Refresh/ install all the gems in your project<br>
 `bundle install`
 3. Set up devise in your project by running the generator command to create all the necessary logic and views 
@@ -118,7 +119,7 @@ end
 ```
 
 2. Modify the code to include your name where it says **[Replace your name here]** around line 16.<br>
-3. Refresh your browser page and take a look at the changes made to the page <br>
+3. View the changes you have made by navigating to http://localhost:3000/ <br>
 
 <hr>
 
