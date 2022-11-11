@@ -185,4 +185,4 @@ class Project < ApplicationRecord
     validates_presence_of :title, :description
 end
 ```
-12. Push your code back to GitHub and re-check CircleCI to ensure that all the tests pass again.<br>
+12. Push your code back to GitHub and re-check CircleCI to ensure that all the tests pass again<br>
