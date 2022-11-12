@@ -95,6 +95,7 @@ end
   
   <body>
     <div style="margin: 5% 0 0 10%;">
+    <h1>Projects</h1>   
     <h1>CS 3300 Portfolio Project - Fall 2022</h1>
 
       <div style="padding-left: 2rem;">
@@ -140,7 +141,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: 'tghastings/code-esaas:latest'
+      - image: 'tghastings/code-esaas'
     steps:
       - checkout
       - run:
@@ -154,6 +155,7 @@ workflows:
     jobs:
       - build
 ```
+4. You will need to push your code to Github
 
 ### Step 2 - Setting up a CircleCI account
 1. Go to https://circleci.com and Sign-in with GitHub
