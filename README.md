@@ -189,3 +189,6 @@ class Project < ApplicationRecord
 end
 ```
 12. Push your code back to GitHub and re-check CircleCI to ensure that all the tests pass again<br>
+
+
+### Note: If your tests are not all passing and CircleCI does not show "Successful" this is OK
